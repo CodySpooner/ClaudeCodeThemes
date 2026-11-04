@@ -1,0 +1,17 @@
+{
+  "name": "theme-pack",
+  "version": "0.1.0",
+  "description": "Sakura, Voltage, Royal and Crunch: pick one in /theme and the whole CLI restyles with animations, banners and themed details",
+  "author": {
+    "name": "Xody"
+  },
+  "homepage": "https://github.com/CodySpooner/claude-code-themes",
+  "repository": "https://github.com/CodySpooner/claude-code-themes",
+  "keywords": [
+    "theme",
+    "themes",
+    "terminal",
+    "animation"
+  ],
+  "types": "./types/index.d.ts"
+}

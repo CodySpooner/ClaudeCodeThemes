@@ -1,0 +1,28 @@
+{
+  "name": "Crunch",
+  "base": "dark",
+  "overrides": {
+    "claude": "#efca5a",
+    "text": "#ecebff",
+    "inverseText": "#360e85",
+    "inactive": "#aaa6dc",
+    "subtle": "#7570b3",
+    "suggestion": "#c8edfd",
+    "permission": "#c8edfd",
+    "remember": "#f6a6d8",
+    "success": "#8ee6b5",
+    "error": "#ff6b8b",
+    "warning": "#ffa94d",
+    "merged": "#c77ddb",
+    "promptBorder": "#9d41bc",
+    "bashBorder": "#efca5a",
+    "planMode": "#c8edfd",
+    "autoAccept": "#f6a6d8",
+    "ide": "#c8edfd",
+    "fastMode": "#efca5a",
+    "claudeShimmer": "#fff3c4",
+    "promptBorderShimmer": "#dad8fb",
+    "userMessageBackground": "#1e0b45",
+    "selectionBg": "#360e85"
+  }
+}

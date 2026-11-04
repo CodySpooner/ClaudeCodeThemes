@@ -1,0 +1,28 @@
+{
+  "name": "Royal",
+  "base": "dark",
+  "overrides": {
+    "claude": "#ffd166",
+    "text": "#f4effb",
+    "inverseText": "#000000",
+    "inactive": "#ab9cc2",
+    "subtle": "#6f5f88",
+    "suggestion": "#d0a2f7",
+    "permission": "#ffd166",
+    "remember": "#e0b0ff",
+    "success": "#7bd88f",
+    "error": "#ff6b6b",
+    "warning": "#ffc94a",
+    "merged": "#c77dff",
+    "promptBorder": "#9d4edd",
+    "bashBorder": "#ffd166",
+    "planMode": "#c77dff",
+    "autoAccept": "#ffe29a",
+    "ide": "#d0a2f7",
+    "fastMode": "#ffd166",
+    "claudeShimmer": "#fff1c1",
+    "promptBorderShimmer": "#d0a2f7",
+    "userMessageBackground": "#1e1230",
+    "selectionBg": "#3c1f5c"
+  }
+}

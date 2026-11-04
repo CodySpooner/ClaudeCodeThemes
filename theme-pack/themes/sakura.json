@@ -1,0 +1,28 @@
+{
+  "name": "Sakura",
+  "base": "dark",
+  "overrides": {
+    "claude": "#ff6b8b",
+    "text": "#f7eef0",
+    "inverseText": "#000000",
+    "inactive": "#b8a3a9",
+    "subtle": "#7a646a",
+    "suggestion": "#ff8fa3",
+    "permission": "#ffccd5",
+    "remember": "#ffc2d1",
+    "success": "#7ee0a1",
+    "error": "#ff5252",
+    "warning": "#ffc857",
+    "merged": "#c9a0dc",
+    "promptBorder": "#e63946",
+    "bashBorder": "#ff8fa3",
+    "planMode": "#ffb3c6",
+    "autoAccept": "#ffd6e0",
+    "ide": "#ff8fa3",
+    "fastMode": "#ffb703",
+    "claudeShimmer": "#ffd1dc",
+    "promptBorderShimmer": "#ff8fa3",
+    "userMessageBackground": "#2a1519",
+    "selectionBg": "#5c1f2b"
+  }
+}

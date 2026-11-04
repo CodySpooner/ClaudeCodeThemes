@@ -1,0 +1,28 @@
+{
+  "name": "Voltage",
+  "base": "dark",
+  "overrides": {
+    "claude": "#ffd60a",
+    "text": "#eef3ff",
+    "inverseText": "#000000",
+    "inactive": "#9aa8c7",
+    "subtle": "#66739a",
+    "suggestion": "#4cc9f0",
+    "permission": "#ffe066",
+    "remember": "#a0c4ff",
+    "success": "#72e5a0",
+    "error": "#ff6b6b",
+    "warning": "#ffb703",
+    "merged": "#b388ff",
+    "promptBorder": "#3a86ff",
+    "bashBorder": "#ffd60a",
+    "planMode": "#4cc9f0",
+    "autoAccept": "#ffe066",
+    "ide": "#4cc9f0",
+    "fastMode": "#ffd60a",
+    "claudeShimmer": "#fff3b0",
+    "promptBorderShimmer": "#a0c4ff",
+    "userMessageBackground": "#101a33",
+    "selectionBg": "#1d3a6e"
+  }
+}
