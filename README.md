@@ -37,8 +37,8 @@ The themes come in two packs, so install one or both:
 Type these at the Claude Code prompt:
 
 ```
-/plugin install theme-pack --marketplace CodySpooner/claude-code-themes
-/plugin install hacker-terminal --marketplace CodySpooner/claude-code-themes
+/plugin install theme-pack --marketplace CodySpooner/ClaudeCodeThemes
+/plugin install hacker-terminal --marketplace CodySpooner/ClaudeCodeThemes
 ```
 
 The first time, Claude Code asks to add the `claude-code-themes` marketplace: answer `y`. Then choose a scope: **user** installs the theme for all your projects.
@@ -46,8 +46,8 @@ The first time, Claude Code asks to add the `claude-code-themes` marketplace: an
 ### From a shell
 
 ```bash
-claude plugin install theme-pack --marketplace CodySpooner/claude-code-themes
-claude plugin install hacker-terminal --marketplace CodySpooner/claude-code-themes
+claude plugin install theme-pack --marketplace CodySpooner/ClaudeCodeThemes
+claude plugin install hacker-terminal --marketplace CodySpooner/ClaudeCodeThemes
 ```
 
 ### In the Claude desktop app
@@ -55,7 +55,7 @@ claude plugin install hacker-terminal --marketplace CodySpooner/claude-code-them
 `/plugin` doesn't run in the desktop app. Instead:
 
 1. Click **+** next to the prompt box, then **Plugins**.
-2. Click **Add marketplace** and enter `CodySpooner/claude-code-themes`.
+2. Click **Add marketplace** and enter `CodySpooner/ClaudeCodeThemes`.
 3. Click **Add plugin** for `theme-pack`, `hacker-terminal` or both.
 
 ## Use a theme
@@ -197,7 +197,7 @@ For Hacker, use `hacker-terminal@claude-code-themes` instead. In a session, `/pl
 ## Repository layout
 
 ```
-claude-code-themes/
+ClaudeCodeThemes/
 ├── .claude-plugin/marketplace.json   the marketplace, listing both packs
 ├── theme-pack/                       Sakura, Voltage, Royal, Crunch and Xody
 │   ├── .claude-plugin/plugin.json
