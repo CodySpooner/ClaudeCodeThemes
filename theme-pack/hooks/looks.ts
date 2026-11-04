@@ -342,6 +342,58 @@ const crunchStrip = () => {
   return svg(defs, `<g clip-path="url(#cereal-round)">${sky}${sparkles}${loops}${milk}${spoon}</g>`)
 }
 
+// Xody: embers rise off a bed of flickering coals into the black, cooling from gold to deep red as they climb.
+const EMBERS = ['•', '•', '∙', '°'].map(cp)
+const HEAT = [0xffd166, 0xff8c42, 0xef4444, 0xb91c1c, 0x5b1d1d]
+const COALS = ['▁', '▂', '▃', '▄'].map(cp)
+const COAL_COLORS = [0x5b1d1d, 0x991b1b, 0xdc2626, 0xef4444, 0xff8c42]
+
+const xody = (columns: number) => {
+  const rows = 4
+  const c = canvas(columns, rows, 0x0a0a0a)
+  const ember = (isFirst: boolean) => ({
+    x: rand(0, columns),
+    y: isFirst ? rand(0, rows - 1) : rows - 1,
+    vx: rand(-0.12, 0.12),
+    vy: -rand(0.06, 0.16),
+    phase: rand(0, Math.PI * 2),
+  })
+  const embers = Array.from({ length: Math.max(4, Math.floor(columns / 3)) }, () => ember(true))
+  let t = 0
+  return () => {
+    t++
+    c.clear()
+    for (let x = 0; x < columns; x++) {
+      const h = Math.sin(x * 0.5 + t * 0.3) + Math.sin(x * 0.17 - t * 0.21) + 2
+      c.put(x, rows - 1, COALS[Math.min(3, Math.floor(h))]!, COAL_COLORS[Math.min(4, Math.floor(h * 1.25))]!)
+    }
+    embers.forEach((e, i) => {
+      // Higher is cooler: gold just off the coals, deep red near the top.
+      const heat = HEAT[Math.min(4, Math.floor((rows - 1 - e.y) * 1.5))]!
+      c.put(e.x, e.y, EMBERS[Math.min(3, Math.floor(rows - 1 - e.y))]!, heat)
+      e.x += e.vx + Math.sin(t * 0.12 + e.phase) * 0.15
+      e.y += e.vy
+      if (e.y < 0) embers[i] = ember(false)
+    })
+    return c.encode()
+  }
+}
+
+const xodyStrip = () => {
+  const defs =
+    '<linearGradient id="xody-glow" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ef4444" stop-opacity="0"/><stop offset="1" stop-color="#ef4444" stop-opacity="0.35"/></linearGradient>'
+  const night = `<rect width="${W}" height="${H}" rx="6" fill="#0a0a0a"/><rect y="${H / 2}" width="${W}" height="${H / 2}" rx="6" fill="url(#xody-glow)"><animate attributeName="opacity" values="0.7;1;0.8;1;0.7" dur="2.6s" repeatCount="indefinite"/></rect>`
+  const embers = Array.from({ length: 30 }, () => {
+    const x = rand(4, W - 40)
+    const dur = rand(2.4, 5)
+    const begin = `begin="-${n(rand(0, dur))}s"`
+    return `<circle r="${n(rand(0.9, 2))}"><animateTransform attributeName="transform" type="translate" values="${n(x)} ${H + 2}; ${n(x + rand(-18, 18))} -4" dur="${n(dur)}s" ${begin} repeatCount="indefinite"/><animate attributeName="fill" values="#ffd166;#ff8c42;#ef4444;#7f1d1d" dur="${n(dur)}s" ${begin} repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.9;0" dur="${n(dur)}s" ${begin} repeatCount="indefinite"/></circle>`
+  }).join('')
+  // The profile's blinking red cursor, parked at the right.
+  const cursor = `<rect x="${W - 24}" y="10" width="8" height="20" fill="#ef4444"><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.5;1" dur="1.1s" repeatCount="indefinite"/></rect>`
+  return svg(defs, night + embers + cursor)
+}
+
 export const LOOKS: Record<string, Look> = {
   sakura: {
     key: 'sakura',
@@ -411,5 +463,21 @@ export const LOOKS: Record<string, Look> = {
       replyPill: { text: ' ◎ claude ', color: '#360e85', background: '#efca5a', rule: '#4a4590' },
       turnFooter: { lead: '◎ ─── ', tail: ' ─── ✦', color: '#efca5a' },
     },
+  },
+  xody: {
+    key: 'xody',
+    glyph: '◆',
+    badge: '◆ xody',
+    accent: '#ef4444',
+    rule: '#5b1d1d',
+    banner: ['▀▄▀ █▀█ █▀▄ █▄█', '█ █ █▄█ █▄▀  █'],
+    title: '◆ XODY',
+    tagline: '◆ building cool things on the internet_',
+    colors: { top: '#fafafa', bottom: '#ef4444', tagline: '#a1a1aa' },
+    verbs: ['Vibing', 'Cooking', 'Shipping', 'Igniting', 'Forging', 'Stoking the fire'],
+    past: ['Vibed', 'Cooked', 'Shipped', 'Forged', 'Ignited'],
+    rows: 4,
+    scene: xody,
+    strip: xodyStrip,
   },
 }

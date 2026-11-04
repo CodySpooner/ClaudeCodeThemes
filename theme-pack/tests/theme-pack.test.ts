@@ -6,6 +6,7 @@ const LOOKS = [
   { key: 'voltage', rows: 3, glyph: 'ϟ', badge: 'ϟ voltage', verbs: ['Routing', 'Pulsing', 'Soldering', 'Charging', 'Arcing', 'Amplifying', 'Overclocking'], banner: '█ █ █▀█ █' },
   { key: 'royal', rows: 4, glyph: '♛', badge: '♛ royal', verbs: ['Decreeing', 'Knighting', 'Crowning', 'Proclaiming', 'Gilding', 'Summoning the court'], banner: '█▀█ █▀█ █▄█' },
   { key: 'crunch', rows: 4, glyph: '◎', badge: '◎ crunch', verbs: ['Crunching', 'Pouring', 'Spooning', 'Sprinkling', 'Toasting', 'Frosting', 'Stirring the bowl'], banner: '█▀▀ █▀█ █ █ █▄ █' },
+  { key: 'xody', rows: 4, glyph: '◆', badge: '◆ xody', verbs: ['Vibing', 'Cooking', 'Shipping', 'Igniting', 'Forging', 'Stoking the fire'], banner: '▀▄▀ █▀█ █▀▄' },
 ] as const
 
 const band = (bodyColumns = 80, maxRows = 14) =>
@@ -158,7 +159,7 @@ for (const look of LOOKS) {
     expect(source).toMatch(/^<svg [^]*<\/svg>$/)
     expect(source).toMatch(/<animate(Transform|Motion)? /)
     expect(source.length).toBeLessThan(131072)
-    expect(await ui.find({ type: 'Text', text: /by decree|circuit live|petals on the wind|balanced codebase/ })).toBeDefined()
+    expect(await ui.find({ type: 'Text', text: /by decree|circuit live|petals on the wind|balanced codebase|cool things/ })).toBeDefined()
     expect(await ui.find({ type: 'Text', text: 'drawn by the engine' })).toBeDefined()
     await ui.unmount()
 

@@ -1,0 +1,28 @@
+{
+  "name": "Xody",
+  "base": "dark",
+  "overrides": {
+    "claude": "#ef4444",
+    "text": "#fafafa",
+    "inverseText": "#000000",
+    "inactive": "#a1a1aa",
+    "subtle": "#52525b",
+    "suggestion": "#f87171",
+    "permission": "#fca5a5",
+    "remember": "#fecaca",
+    "success": "#4ade80",
+    "error": "#ff5252",
+    "warning": "#ffc857",
+    "merged": "#c4b5fd",
+    "promptBorder": "#ef4444",
+    "bashBorder": "#f87171",
+    "planMode": "#fca5a5",
+    "autoAccept": "#fecaca",
+    "ide": "#f87171",
+    "fastMode": "#ff8c42",
+    "claudeShimmer": "#fca5a5",
+    "promptBorderShimmer": "#f87171",
+    "userMessageBackground": "#1a0d0d",
+    "selectionBg": "#5b1d1d"
+  }
+}
