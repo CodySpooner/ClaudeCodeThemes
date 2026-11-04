@@ -213,4 +213,4 @@ To add a look to `theme-pack`, add its colours as `theme-pack/themes/<key>.json`
 
 ---
 
-<p align="center">Made by <a href="https://github.com/CodySpooner">Xody</a></p>
+<p align="center">Made by <a href="https://github.com/CodySpooner">Xody</a> · <a href="LICENSE">MIT license</a></p>
