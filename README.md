@@ -1,7 +1,7 @@
-<p align="center"><img src="docs/images/hero.svg" width="100%" alt="Claude Code Themes: Sakura, Voltage, Royal and Crunch animating in the Claude Code desktop app"></p>
+<p align="center"><img src="docs/images/hero.svg" width="100%" alt="Claude Code Themes: Sakura, Voltage, Royal, Crunch and Xody animating in the Claude Code desktop app"></p>
 
 <p align="center">
-  <b>Five animated themes for Claude Code.</b><br>
+  <b>Six animated themes for Claude Code.</b><br>
   Pick one in <code>/theme</code> and the whole CLI restyles: an animated scene above the prompt,<br>
   a boot banner, themed spinner words, prompt cards and more.
 </p>
@@ -20,6 +20,7 @@
 | ϟ | [**Voltage**](#voltage) | `theme-pack` | Blue and yellow, current pulsing along a circuit board |
 | ♛ | [**Royal**](#royal) | `theme-pack` | Purple and gold, sparkles over velvet |
 | ◎ | [**Crunch**](#crunch) | `theme-pack` | Saturday-morning cereal: purple, lavender, sky blue, magenta and gold |
+| ◆ | [**Xody**](#xody) | `theme-pack` | Red on black, embers rising off glowing coals |
 | ▓ | [**Hacker**](#hacker) | `hacker-terminal` | Green on black, matrix rain and an "ACCESS GRANTED" banner |
 
 ## Install
@@ -28,7 +29,7 @@ You need Claude Code with plugin support. These themes are tested on Claude Code
 
 The themes come in two packs, so install one or both:
 
-- `theme-pack`: Sakura, Voltage, Royal and Crunch
+- `theme-pack`: Sakura, Voltage, Royal, Crunch and Xody
 - `hacker-terminal`: Hacker
 
 ### In a Claude Code terminal session
@@ -60,7 +61,7 @@ claude plugin install hacker-terminal --marketplace CodySpooner/claude-code-them
 ## Use a theme
 
 1. Run `/theme`.
-2. Pick **Sakura**, **Voltage**, **Royal**, **Crunch** or **Hacker**. They're listed with Claude Code's own themes.
+2. Pick **Sakura**, **Voltage**, **Royal**, **Crunch**, **Xody** or **Hacker**. They're listed with Claude Code's own themes.
 3. Start typing. The theme's banner greets you until your first prompt, and its scene keeps animating above the prompt.
 
 To go back to normal, run `/theme` and pick one of Claude Code's own themes. All the extras switch off with it.
@@ -74,14 +75,14 @@ To go back to normal, run `/theme` and pick one of Claude Code's own themes. All
 
 ## The themes
 
-The pictures below are rendered from each theme's own drawing code, so the colours, banners and scenes are exactly what the theme draws. Each pair shows the screen when you start Claude Code (left) and a session in progress (right).
+The pictures below are rendered from each theme's own drawing code, so the colours, banners and scenes are exactly what the theme draws. Each pair shows the screen when you start Claude Code (left, animated) and a session in progress (right).
 
 ### Sakura
 
 Red and white. Cherry petals drift across the strip on a breeze, under a red sun.
 
 <table><tr>
-<td width="50%"><img src="docs/images/sakura-boot.png" alt="Sakura: falling petals above a SAKURA block banner and the prompt"></td>
+<td width="50%"><img src="docs/images/sakura-boot.gif" alt="Sakura: falling petals above a SAKURA block banner and the prompt"></td>
 <td width="50%"><img src="docs/images/sakura-session.png" alt="Sakura: prompts in red cards, a petal divider on each reply, and the Drifting spinner"></td>
 </tr></table>
 
@@ -95,7 +96,7 @@ Red and white. Cherry petals drift across the strip on a breeze, under a red sun
 Blue and yellow. Current pulses along the traces of a circuit board.
 
 <table><tr>
-<td width="50%"><img src="docs/images/voltage-boot.png" alt="Voltage: a circuit board scene above a VOLTAGE block banner"></td>
+<td width="50%"><img src="docs/images/voltage-boot.gif" alt="Voltage: a circuit board scene above a VOLTAGE block banner"></td>
 <td width="50%"><img src="docs/images/voltage-session.png" alt="Voltage: prompts in blue cards, a bolt divider on each reply, and the Pulsing spinner"></td>
 </tr></table>
 
@@ -109,7 +110,7 @@ Blue and yellow. Current pulses along the traces of a circuit board.
 Purple and gold. Gold sparkles twinkle over velvet, above a shimmering gold fringe.
 
 <table><tr>
-<td width="50%"><img src="docs/images/royal-boot.png" alt="Royal: gold sparkles on velvet above a ROYAL block banner"></td>
+<td width="50%"><img src="docs/images/royal-boot.gif" alt="Royal: gold sparkles on velvet above a ROYAL block banner"></td>
 <td width="50%"><img src="docs/images/royal-session.png" alt="Royal: prompts in purple cards, a crown divider on each reply, and the Knighting spinner"></td>
 </tr></table>
 
@@ -125,7 +126,7 @@ A Saturday-morning cereal look in deep purple, lavender, sky blue, magenta and g
 Crunch also restyles the conversation: your prompts get a "✦ you" label, each reply opens with a gold "◎ claude" pill, and every turn ends with a decorated footer.
 
 <table><tr>
-<td width="50%"><img src="docs/images/crunch-boot.png" alt="Crunch: cereal loops falling into milk above a CRUNCH block banner"></td>
+<td width="50%"><img src="docs/images/crunch-boot.gif" alt="Crunch: cereal loops falling into milk above a CRUNCH block banner"></td>
 <td width="50%"><img src="docs/images/crunch-session.png" alt="Crunch: labelled prompt cards, the gold claude pill, a decorated turn footer and the Pouring spinner"></td>
 </tr></table>
 
@@ -134,18 +135,32 @@ Crunch also restyles the conversation: your prompts get a "✦ you" label, each 
 
   <img src="docs/images/crunch-desktop.svg" width="640" alt="Crunch desktop strip: cereal loops bouncing on a wave of milk as a spoon swoops past">
 
+### Xody
+
+Red on black. Embers rise off a bed of glowing coals, cooling from gold to deep red as they climb, under a XODY banner.
+
+<table><tr>
+<td width="50%"><img src="docs/images/xody-boot.gif" alt="Xody: embers rising off glowing coals above a XODY block banner"></td>
+<td width="50%"><img src="docs/images/xody-session.png" alt="Xody: prompts in red cards, a diamond divider on each reply, and the Cooking spinner"></td>
+</tr></table>
+
+- **Spinner words:** Vibing, Cooking, Shipping, Igniting, Forging, Stoking the fire
+- **Desktop app strip:**
+
+  <img src="docs/images/xody-desktop.svg" width="640" alt="Xody desktop strip: embers drifting up through the dark beside a blinking red cursor">
+
 ### Hacker
 
 Green on black. Matrix rain falls above the prompt, and an "ACCESS GRANTED" banner greets you until your first prompt. Hacker comes in its own pack, `hacker-terminal`.
 
 <table><tr>
-<td width="50%"><img src="docs/images/hacker-boot.png" alt="Hacker: green katakana rain above an ACCESS GRANTED block banner"></td>
+<td width="50%"><img src="docs/images/hacker-boot.gif" alt="Hacker: green katakana rain above an ACCESS GRANTED block banner"></td>
 <td width="50%"><img src="docs/images/hacker-session.png" alt="Hacker: a green-on-black session with matrix rain above the prompt"></td>
 </tr></table>
 
 ### What each theme changes
 
-| | Sakura, Voltage, Royal, Crunch | Hacker |
+| | Sakura, Voltage, Royal, Crunch, Xody | Hacker |
 | --- | :---: | :---: |
 | Colours across Claude Code | ✓ | ✓ |
 | Animated scene above the prompt | ✓ | ✓ |
@@ -184,7 +199,7 @@ For Hacker, use `hacker-terminal@claude-code-themes` instead. In a session, `/pl
 ```
 claude-code-themes/
 ├── .claude-plugin/marketplace.json   the marketplace, listing both packs
-├── theme-pack/                       Sakura, Voltage, Royal and Crunch
+├── theme-pack/                       Sakura, Voltage, Royal, Crunch and Xody
 │   ├── .claude-plugin/plugin.json
 │   ├── hooks/register.tsx            draws the scene, banner, cards, divider and spinner words
 │   ├── hooks/looks.ts                each look: banner, colours, scene and desktop strip

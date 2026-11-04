@@ -1,6 +1,6 @@
 {
   "name": "claude-code-themes",
-  "description": "Animated themes for Claude Code: Sakura, Voltage, Royal, Crunch and Hacker",
+  "description": "Animated themes for Claude Code: Sakura, Voltage, Royal, Crunch, Xody and Hacker",
   "owner": {
     "name": "Xody"
   },
@@ -8,7 +8,7 @@
     {
       "name": "theme-pack",
       "source": "./theme-pack",
-      "description": "Sakura, Voltage, Royal and Crunch: pick one in /theme and the whole CLI restyles with animations, banners and themed details"
+      "description": "Sakura, Voltage, Royal, Crunch and Xody: pick one in /theme and the whole CLI restyles with animations, banners and themed details"
     },
     {
       "name": "hacker-terminal",
