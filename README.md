@@ -1,4 +1,4 @@
-<p align="center"><img src="docs/images/hero.svg" width="100%" alt="Claude Code Themes: Sakura, Voltage, Royal, Crunch and Xody animating in the Claude Code desktop app"></p>
+<p align="center"><img src="docs/images/hero.svg" width="100%" alt="Claude Code Themes: the animated activity bar of each of the six themes, with a progress rail under each"></p>
 
 <p align="center">
   <b>Six animated themes for Claude Code.</b><br>
@@ -72,7 +72,7 @@ To go back to normal, run `/theme` and pick one of Claude Code's own themes. All
 
 - **Reduced motion:** with reduced motion turned on in Claude Code's settings, the scenes hold still.
 - **Small windows:** in a narrow window the banner shrinks to a one-line title. When there's no room above the prompt, the scene steps aside instead of crowding it.
-- **Desktop app:** the `theme-pack` themes draw their own animated strip above the prompt (shown under each theme below). Hacker's rain is terminal only, and it also skips light themes.
+- **Desktop app:** the `theme-pack` themes draw their own animated strip above the prompt (shown under each theme below). Hacker's rain is terminal only, and it also skips light themes. With the [Desktop HUD](#desktop-hud), all six also get an activity bar.
 - **Fonts:** the scenes use symbols such as ❀ ϟ ♛ ✦ and halfwidth katakana. A terminal font with wide symbol coverage, like Cascadia Code or JetBrains Mono, draws them best.
 
 ## The themes
@@ -92,6 +92,9 @@ Red and white. Cherry petals drift across the strip on a breeze, under a red sun
 - **Desktop app strip:**
 
   <img src="docs/images/sakura-desktop.svg" width="640" alt="Sakura desktop strip: petals drifting past a red sun at dusk">
+- **Activity bar, with the [Desktop HUD](#desktop-hud):**
+
+  <img src="docs/images/sakura-bar.svg" width="480" alt="Sakura activity bar: blossoms swaying in front of a setting sun, above a progress rail">
 
 ### Voltage
 
@@ -106,6 +109,9 @@ Blue and yellow. Current pulses along the traces of a circuit board.
 - **Desktop app strip:**
 
   <img src="docs/images/voltage-desktop.svg" width="640" alt="Voltage desktop strip: yellow pulses racing along blue circuit traces">
+- **Activity bar, with the [Desktop HUD](#desktop-hud):**
+
+  <img src="docs/images/voltage-bar.svg" width="480" alt="Voltage activity bar: an LED meter under crackling arcs, above a progress rail">
 
 ### Royal
 
@@ -120,6 +126,9 @@ Purple and gold. Gold sparkles twinkle over velvet, above a shimmering gold frin
 - **Desktop app strip:**
 
   <img src="docs/images/royal-desktop.svg" width="640" alt="Royal desktop strip: twinkling gold stars over purple velvet with a gold fringe">
+- **Activity bar, with the [Desktop HUD](#desktop-hud):**
+
+  <img src="docs/images/royal-bar.svg" width="480" alt="Royal activity bar: gold organ pipes with jewel caps on velvet, above a progress rail">
 
 ### Crunch
 
@@ -136,6 +145,9 @@ Crunch also restyles the conversation: your prompts get a "✦ you" label, each 
 - **Desktop app strip:**
 
   <img src="docs/images/crunch-desktop.svg" width="640" alt="Crunch desktop strip: cereal loops bouncing on a wave of milk as a spoon swoops past">
+- **Activity bar, with the [Desktop HUD](#desktop-hud):**
+
+  <img src="docs/images/crunch-bar.svg" width="480" alt="Crunch activity bar: stacks of cereal loops leaping out of milk, above a progress rail">
 
 ### Xody
 
@@ -150,6 +162,9 @@ Red on black. Embers rise off a bed of glowing coals, cooling from gold to deep 
 - **Desktop app strip:**
 
   <img src="docs/images/xody-desktop.svg" width="640" alt="Xody desktop strip: embers drifting up through the dark beside a blinking red cursor">
+- **Activity bar, with the [Desktop HUD](#desktop-hud):**
+
+  <img src="docs/images/xody-bar.svg" width="480" alt="Xody activity bar: layers of flame throwing embers, above a progress rail">
 
 ### Hacker
 
@@ -159,6 +174,10 @@ Green on black. Matrix rain falls above the prompt, and an "ACCESS GRANTED" bann
 <td width="50%"><img src="docs/images/hacker-boot.gif" alt="Hacker: green katakana rain above an ACCESS GRANTED block banner"></td>
 <td width="50%"><img src="docs/images/hacker-session.png" alt="Hacker: a green-on-black session with matrix rain above the prompt"></td>
 </tr></table>
+
+- **Activity bar, with the [Desktop HUD](#desktop-hud):**
+
+  <img src="docs/images/hacker-bar.svg" width="480" alt="Hacker activity bar: digital rain and a live signal trace, above a progress rail">
 
 ### What each theme changes
 
@@ -172,12 +191,13 @@ Green on black. Matrix rain falls above the prompt, and an "ACCESS GRANTED" bann
 | A themed divider opening each reply | ✓ | |
 | Theme badge next to your modes | ✓ | |
 | Animated strip in the desktop app | ✓ | |
+| Activity bar, with the [Desktop HUD](#desktop-hud) | ✓ | ✓ |
 
 ## Desktop HUD
 
 `desktop-hud` is an optional extra for the Claude desktop app. It works with any theme, and each theme here gets its own look.
 
-<p><img src="docs/images/activity-bars.svg" width="480" alt="Six activity bars, one per theme, each an animated scene with a progress rail beneath it"></p>
+<p><img src="docs/images/activity-bars.svg" width="700" alt="The Voltage activity bar four ways: idle, working, with a task list, and with subagents including a failed one"></p>
 
 Install it the same way as the themes: click **Add plugin** for `desktop-hud` in the desktop app, or run this from a shell:
 
@@ -207,6 +227,10 @@ The rail under the scene shows how far along Claude is: one segment for each ste
 The rail counts finished steps instead of showing a percentage, because Claude Code can't tell how far through a step Claude is. It only appears when Claude has a task list or subagents.
 
 ### The panels
+
+<p><img src="docs/images/hud-dashboard.svg" width="100%" alt="The /dash panel in the Xody, Voltage and Sakura themes: a context gauge, a tool mix donut and tokens per turn"></p>
+
+`/dash` follows your theme's colours. The numbers in this picture are samples.
 
 | Command | What it opens |
 | --- | --- |
