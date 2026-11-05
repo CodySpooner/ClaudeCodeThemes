@@ -1,0 +1,18 @@
+{
+  "name": "desktop-hud",
+  "version": "1.0.0",
+  "description": "A themed activity bar with a live progress rail, plus a session dashboard, files heatmap and quick actions dock for the Claude Code desktop app",
+  "author": {
+    "name": "Xody"
+  },
+  "homepage": "https://github.com/CodySpooner/ClaudeCodeThemes",
+  "repository": "https://github.com/CodySpooner/ClaudeCodeThemes",
+  "license": "MIT",
+  "keywords": [
+    "dashboard",
+    "progress",
+    "desktop",
+    "animation"
+  ],
+  "types": "./types/index.d.ts"
+}

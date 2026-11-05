@@ -3,13 +3,15 @@
 <p align="center">
   <b>Six animated themes for Claude Code.</b><br>
   Pick one in <code>/theme</code> and the whole CLI restyles: an animated scene above the prompt,<br>
-  a boot banner, themed spinner words, prompt cards and more.
+  a boot banner, themed spinner words, prompt cards and more.<br>
+  Plus an optional <a href="#desktop-hud">HUD for the desktop app</a> with a live progress bar.
 </p>
 
 <p align="center">
   <a href="#install">Install</a> ·
   <a href="#use-a-theme">Use a theme</a> ·
   <a href="#the-themes">The themes</a> ·
+  <a href="#desktop-hud">Desktop HUD</a> ·
   <a href="#update-or-uninstall">Update or uninstall</a> ·
   <a href="#troubleshooting">Troubleshooting</a>
 </p>
@@ -171,6 +173,50 @@ Green on black. Matrix rain falls above the prompt, and an "ACCESS GRANTED" bann
 | Theme badge next to your modes | ✓ | |
 | Animated strip in the desktop app | ✓ | |
 
+## Desktop HUD
+
+`desktop-hud` is an optional extra for the Claude desktop app. It works with any theme, and each theme here gets its own look.
+
+<p><img src="docs/images/activity-bars.svg" width="480" alt="Six activity bars, one per theme, each an animated scene with a progress rail beneath it"></p>
+
+Install it the same way as the themes: click **Add plugin** for `desktop-hud` in the desktop app, or run this from a shell:
+
+```bash
+claude plugin install desktop-hud --marketplace CodySpooner/ClaudeCodeThemes
+```
+
+### The activity bar
+
+The bar sits above the prompt and shows what Claude is doing. It stays calm while Claude is idle, picks up while Claude works, and fires a burst on every tool call.
+
+| Theme | Scene | On each tool call |
+| --- | --- | --- |
+| Hacker | Digital rain and a live signal trace | A scan bar sweeps across |
+| Sakura | Blossoms swaying in front of a setting sun | A blossom bursts into petals |
+| Voltage | An LED meter under crackling arcs | A lightning strike |
+| Royal | Gold organ pipes with jewel caps on velvet | A crown in a shower of stars |
+| Crunch | Stacks of cereal loops leaping out of milk | A spoon swoops through |
+| Xody | Layers of flame throwing embers | A fireball |
+
+Any other theme gets ribbons in Claude's own colours.
+
+### The progress rail
+
+The rail under the scene shows how far along Claude is: one segment for each step of its task list, and one dot for each subagent. Finished pieces are filled and the current step fills on a loop. Failed subagents turn red. Hover over a piece to see its name.
+
+The rail counts finished steps instead of showing a percentage, because Claude Code can't tell how far through a step Claude is. It only appears when Claude has a task list or subagents.
+
+### The panels
+
+| Command | What it opens |
+| --- | --- |
+| `/dash` | Tokens per turn, context used, cost and the tools Claude called |
+| `/files` | A heatmap of the files Claude read or edited this session |
+| `/actions` | A dock of one-click commands and saved prompts. Edit `desktop-hud/hooks/actions.ts` to change them |
+| `/hud` | All three |
+
+The panels also work in the terminal, where `/dash` falls back to text. The activity bar and the progress rail are desktop only.
+
 ## Update or uninstall
 
 To update, run this, then restart Claude Code:
@@ -185,7 +231,7 @@ To uninstall, run this, then pick another theme in `/theme`:
 claude plugin uninstall theme-pack@claude-code-themes
 ```
 
-For Hacker, use `hacker-terminal@claude-code-themes` instead. In a session, `/plugin` does the same from a menu.
+For Hacker, use `hacker-terminal@claude-code-themes` instead, and for the HUD, `desktop-hud@claude-code-themes`. In a session, `/plugin` does the same from a menu.
 
 ## Troubleshooting
 
@@ -193,12 +239,13 @@ For Hacker, use `hacker-terminal@claude-code-themes` instead. In a session, `/pl
 - **Nothing moves:** reduced motion is on, or the window is too short for the scene, which needs 3 or 4 free rows above the prompt.
 - **Boxes instead of petals or katakana:** your terminal font is missing those symbols. Switch to a font with wider symbol coverage.
 - **The banner disappeared:** it only shows until your first prompt, and comes back in your next session.
+- **No progress rail:** it only appears when Claude has a task list or subagents, and only in the desktop app with `desktop-hud` installed.
 
 ## Repository layout
 
 ```
 ClaudeCodeThemes/
-├── .claude-plugin/marketplace.json   the marketplace, listing both packs
+├── .claude-plugin/marketplace.json   the marketplace, listing the packs and the HUD
 ├── theme-pack/                       Sakura, Voltage, Royal, Crunch and Xody
 │   ├── .claude-plugin/plugin.json
 │   ├── hooks/register.tsx            draws the scene, banner, cards, divider and spinner words
@@ -206,6 +253,12 @@ ClaudeCodeThemes/
 │   ├── themes/*.json                 the colour themes that /theme lists
 │   └── tests/
 ├── hacker-terminal/                  Hacker, laid out the same way
+├── desktop-hud/                      the activity bar, progress rail and panels
+│   ├── hooks/register.tsx            tracks the session and draws the band and panels
+│   ├── hooks/bars.ts                 each theme's activity bar and the progress rail
+│   ├── hooks/charts.ts               the dashboard's charts
+│   ├── hooks/actions.ts              the buttons in the /actions dock
+│   └── tests/
 └── docs/images/                      the pictures in this README
 ```
 

@@ -1,6 +1,6 @@
 {
   "name": "claude-code-themes",
-  "description": "Animated themes for Claude Code: Sakura, Voltage, Royal, Crunch, Xody and Hacker",
+  "description": "Animated themes for Claude Code (Sakura, Voltage, Royal, Crunch, Xody and Hacker) and a themed HUD for the desktop app",
   "owner": {
     "name": "Xody"
   },
@@ -14,6 +14,11 @@
       "name": "hacker-terminal",
       "source": "./hacker-terminal",
       "description": "Green-on-black Hacker theme, matrix rain above the prompt, and a boot banner"
+    },
+    {
+      "name": "desktop-hud",
+      "source": "./desktop-hud",
+      "description": "A themed activity bar with a live progress rail, plus a session dashboard, files heatmap and quick actions dock for the desktop app"
     }
   ]
 }
