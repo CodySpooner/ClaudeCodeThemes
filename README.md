@@ -283,7 +283,9 @@ ClaudeCodeThemes/
 │   ├── hooks/charts.ts               the dashboard's charts
 │   ├── hooks/actions.ts              the buttons in the /actions dock
 │   └── tests/
-└── docs/images/                      the pictures in this README
+└── docs/
+    ├── make-pictures.mjs             draws the HUD pictures from the plugin's own code
+    └── images/                       the pictures in this README
 ```
 
 ## Development
@@ -302,6 +304,12 @@ claude plugin validate theme-pack
 ```
 
 To add a look to `theme-pack`, add its colours as `theme-pack/themes/<key>.json` and its scene, banner and words as `<key>` in `LOOKS` in `theme-pack/hooks/looks.ts`.
+
+After changing a bar or a chart in `desktop-hud`, redraw its pictures. This needs Node 24 and Chrome, and doesn't touch the terminal GIFs, session screenshots or desktop strips:
+
+```bash
+node docs/make-pictures.mjs
+```
 
 ---
 
