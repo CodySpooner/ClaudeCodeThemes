@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en" data-theme="xody">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code Themes: six animated themes for Claude Code</title>
+<meta name="description" content="Pick one in /theme and the whole CLI restyles: an animated scene above the prompt, a boot banner, themed spinner words, prompt cards and more. Free and open source.">
+<meta name="theme-color" content="#0e0707">
+<link rel="canonical" href="https://codyspooner.github.io/ClaudeCodeThemes/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e0707'/%3E%3Cpath d='M16 5l11 11-11 11L5 16z' fill='%23ef4444'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Claude Code Themes: six animated themes for Claude Code">
+<meta property="og:description" content="Pick one in /theme and the whole CLI restyles. Free and open source.">
+<meta property="og:url" content="https://codyspooner.github.io/ClaudeCodeThemes/">
+<meta property="og:image" content="https://codyspooner.github.io/ClaudeCodeThemes/images/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+@font-face{font-family:Inter;src:url(fonts/inter.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url(fonts/jetbrains-mono.woff2) format("woff2");font-weight:100 800;font-display:swap}
+
+/* Each theme's colors come from its own theme file */
+[data-theme=sakura]{--bg:#140a0d;--surface:#2a1519;--accent:#ff6b8b;--accent-2:#ff8fa3;--text:#f7eef0;--muted:#c4b0b6}
+[data-theme=voltage]{--bg:#0a1122;--surface:#101a33;--accent:#ffd60a;--accent-2:#4cc9f0;--text:#eef3ff;--muted:#a9b6d3}
+[data-theme=royal]{--bg:#140b21;--surface:#1e1230;--accent:#ffd166;--accent-2:#d0a2f7;--text:#f4effb;--muted:#b9abcf}
+[data-theme=crunch]{--bg:#140730;--surface:#1e0b45;--accent:#efca5a;--accent-2:#c8edfd;--text:#ecebff;--muted:#b6b2e4}
+[data-theme=xody]{--bg:#0e0707;--surface:#1a0d0d;--accent:#ef4444;--accent-2:#f87171;--text:#fafafa;--muted:#b4b4bb}
+[data-theme=hacker]{--bg:#070e0a;--surface:#14201a;--accent:#00ff41;--accent-2:#7dff9b;--text:#e6ede7;--muted:#9db3a4}
+
+:root{--line:color-mix(in srgb,var(--accent) 26%,transparent);--mono:"JetBrains Mono",ui-monospace,Consolas,monospace;--edge:clamp(16px,4vw,48px);--top:64px}
+*{box-sizing:border-box;margin:0}
+html{background:var(--bg);color:var(--text);font:400 17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;scroll-padding-top:calc(var(--top) + 16px)}
+body{overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent-2);outline-offset:3px;border-radius:4px}
+.skip{position:fixed;left:16px;top:-80px;z-index:30;padding:10px 16px;background:var(--accent);color:var(--bg);border-radius:8px}
+.skip:focus{top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:var(--edge)}
+code{font-family:var(--mono);font-size:.92em;color:var(--accent-2)}
+h1,h2,h3{font-family:var(--mono);line-height:1.12;letter-spacing:-.025em}
+h2{font-size:clamp(30px,4.6vw,52px);font-weight:800;text-wrap:balance}
+h2::before{content:"> ";color:var(--accent)}
+.lead{color:var(--muted);max-width:60ch}
+section{padding-block:clamp(56px,8vw,104px)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:10px;border:1px solid var(--line);font:600 16px/1 var(--mono);text-decoration:none;color:var(--text);background:transparent;cursor:pointer;touch-action:manipulation;transition:background .2s,border-color .2s,scale .15s}
+.btn:hover{border-color:var(--accent)}
+.btn:active{scale:.97}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+
+/* Bar */
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:8px;height:var(--top)}
+.brand{display:flex;align-items:center;gap:10px;min-height:44px;margin-right:auto;font:700 16px var(--mono);text-decoration:none}
+.brand i{width:10px;height:20px;background:var(--accent);animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.bar nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font:500 14px var(--mono);color:var(--muted);text-decoration:none;transition:color .2s}
+.bar nav a:hover{color:var(--text)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(40px,6vw,72px) 32px}
+h1{font-size:clamp(36px,5.3vw,66px);font-weight:800}
+h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{margin-top:20px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.term{border:1px solid var(--line);border-radius:12px;background:#0a0a0c;overflow:hidden;box-shadow:0 0 80px color-mix(in srgb,var(--accent) 22%,transparent)}
+.term img{width:100%;aspect-ratio:800/309;object-fit:cover}
+.spin{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 16px 10px;font:500 15px var(--mono);color:var(--accent)}
+.spin i{font-style:normal;display:inline-block;animation:turn 2.4s linear infinite}
+@keyframes turn{to{rotate:360deg}}
+.spin small{font-size:13px;color:#a1a1aa}
+.spin[hidden]{display:none}
+
+/* Picker */
+.picker{border:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.picker label{position:relative;display:block;padding:14px 16px;min-height:96px;border:1px solid var(--line);border-radius:12px;background:var(--surface);cursor:pointer;transition:border-color .2s,translate .2s}
+.picker label:hover{translate:0 -2px;border-color:var(--c)}
+.picker input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.picker b{display:block;font:700 16px var(--mono)}
+.picker i{display:block;font-style:normal;font-size:24px;line-height:1.3;color:var(--c)}
+.picker span{display:block;margin-top:2px;font-size:13px;line-height:1.35;color:var(--muted)}
+.picker label:has(:checked){border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c)}
+.picker label:has(:focus-visible){outline:3px solid var(--accent-2);outline-offset:3px}
+.hint{margin-top:12px;font-size:14px;color:var(--muted)}
+
+/* Quick install */
+.cmd{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.cmd code{flex:1;min-width:0;padding:12px 14px;font-size:14px;line-height:1.5;color:var(--text);overflow-wrap:anywhere}
+.cmd code span{white-space:nowrap}
+.copy{flex:none;min-width:72px;min-height:48px;border:0;border-left:1px solid var(--line);background:transparent;color:var(--accent-2);font:600 13px var(--mono);cursor:pointer;touch-action:manipulation;transition:background .2s}
+.copy:hover{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+.hero .cmd{margin-top:24px}
+
+/* Detail */
+.detail{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);margin-top:clamp(24px,4vw,40px);align-items:start}
+.shot{width:100%;aspect-ratio:1600/1016;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.detail h3{font-size:clamp(28px,3.4vw,40px);font-weight:800;color:var(--accent)}
+.detail .tag{display:inline-block;margin-top:10px;padding:4px 10px;border:1px solid var(--line);border-radius:6px;font:500 13px var(--mono);color:var(--muted)}
+.detail p.look{margin-top:14px}
+.label{margin-top:24px;font:600 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.words{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.words li{padding:3px 10px;border-radius:6px;background:var(--surface);font:500 14px var(--mono);color:var(--accent-2)}
+.facts{margin-top:8px;display:grid;gap:4px;color:var(--muted);font-size:16px}
+.facts b{color:var(--text);font-weight:600}
+.strips{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:clamp(24px,4vw,40px)}
+.strips img{width:100%;margin-top:8px;border-radius:8px}
+.strips [hidden]{display:none}
+.strips:has([hidden]){grid-template-columns:minmax(0,560px)}
+
+/* Table */
+.scroll{overflow-x:auto;margin-top:clamp(20px,3vw,32px);border:1px solid var(--line);border-radius:12px}
+table{width:100%;min-width:520px;border-collapse:collapse;font-size:16px}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+thead th{font:600 13px var(--mono);color:var(--muted);vertical-align:bottom}
+td.y,td.n,thead th+th{text-align:center;width:24%}
+td.y{color:var(--accent);font-weight:800}
+td.n{color:var(--muted)}
+
+/* HUD */
+.hud{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:center;margin-top:clamp(20px,3vw,32px)}
+.hud h3{font-size:20px;font-weight:700;margin-top:24px}
+.hud h3:first-child{margin-top:0}
+.hud p{margin-top:6px;color:var(--muted)}
+.wide{margin-top:clamp(28px,4vw,48px);border-radius:12px}
+.commands{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:20px}
+.commands li{padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:15px;color:var(--muted)}
+.commands code{display:block;margin-bottom:4px;font-size:16px;font-weight:700}
+
+/* Install */
+.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(20px,3vw,32px)}
+.way{padding:20px;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--surface) 60%,transparent)}
+.way h3{font-size:18px;font-weight:700}
+.way p,.way ol{margin-top:8px;color:var(--muted);font-size:16px}
+.way ol{padding-left:20px}
+.way .cmd{margin-top:10px}
+.steps{list-style:none;counter-reset:s;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(24px,4vw,40px)}
+.steps li{counter-increment:s;padding-top:14px;border-top:2px solid var(--accent);color:var(--muted)}
+.steps li::before{content:counter(s) ". ";font:700 16px var(--mono);color:var(--accent)}
+.steps b{color:var(--text);font-weight:600}
+
+/* Help */
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:1px solid var(--line);margin-top:clamp(20px,3vw,32px)}
+summary{display:flex;align-items:center;min-height:56px;font-weight:600;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";flex:none;width:24px;font:700 18px var(--mono);color:var(--accent)}
+details[open] summary::before{content:"-"}
+details>div{padding:0 0 18px 24px;color:var(--muted);max-width:72ch}
+details .cmd{margin-top:8px}
+details p+p{margin-top:8px}
+
+footer{padding-block:28px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+footer a{display:inline-block;padding-block:10px}
+
+/* Picking a theme repaints the page outward from the click */
+::view-transition-old(root){animation:none}
+::view-transition-new(root){animation:paint .55s cubic-bezier(.3,.7,.2,1)}
+@keyframes paint{from{clip-path:circle(0 at var(--x,50%) var(--y,50%))}to{clip-path:circle(150vmax at var(--x,50%) var(--y,50%))}}
+
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media (prefers-reduced-motion:reduce){
+  .brand i,.spin i{animation:none}
+  /* The GIFs and SVGs can't stop themselves, so they give way to still pictures and words */
+  .strips,.moving{display:none}
+  .term img{aspect-ratio:auto}
+  *,*::before,*::after{transition-duration:.01ms!important}
+}
+@media (max-width:1000px){
+  .picker{grid-template-columns:repeat(3,1fr)}
+  .commands{grid-template-columns:1fr 1fr}
+  .ways{grid-template-columns:1fr}
+}
+@media (max-width:820px){
+  .hero,.detail,.hud,.strips{grid-template-columns:minmax(0,1fr)}
+  .strips:has([hidden]){grid-template-columns:minmax(0,1fr)}
+  .steps{grid-template-columns:1fr}
+  .picker label{min-height:88px;padding:12px}
+  .picker span{display:none}
+  .bar nav a:not(.keep){display:none}
+  .brand{font-size:14px;white-space:nowrap}
+  .bar nav{display:flex;flex:none}
+  .bar nav a{padding:0 8px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top"><i aria-hidden="true"></i>claude-code-themes</a>
+    <nav aria-label="Sections">
+      <a href="#themes">Themes</a><a href="#hud">Desktop HUD</a><a class="keep" href="#install">Install</a><a class="keep" href="https://github.com/CodySpooner/ClaudeCodeThemes">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<div class="wrap" id="top">
+  <div class="hero">
+    <div>
+      <h1>Six animated themes for <em>Claude Code</em></h1>
+      <p class="lead">Pick one in <code>/theme</code> and the whole CLI restyles: an animated scene above the prompt, a boot banner, themed spinner words, prompt cards and more.</p>
+      <div class="cmd"><code id="quick">/plugin install theme-pack <span>--marketplace</span> CodySpooner/<wbr>ClaudeCodeThemes</code><button class="copy" type="button">Copy</button></div>
+      <div class="actions">
+        <a class="btn primary" href="#install">Install</a>
+        <a class="btn" href="https://github.com/CodySpooner/ClaudeCodeThemes">View on GitHub</a>
+      </div>
+    </div>
+    <div class="term">
+      <img id="boot" src="images/xody-boot.gif" width="800" height="309" alt="Xody: embers rising off glowing coals above a XODY block banner">
+      <p class="spin" id="spin"><i aria-hidden="true">✻</i><span id="word">Vibing</span>… <small>spinner words change with the theme</small></p>
+    </div>
+  </div>
+
+  <form onsubmit="return false">
+    <fieldset class="picker" aria-label="Try a theme on this page">
+      <label style="--c:#ff6b8b"><input type="radio" name="theme" value="sakura"><i aria-hidden="true">❀</i><b>Sakura</b><span>Red and white, cherry petals</span></label>
+      <label style="--c:#ffd60a"><input type="radio" name="theme" value="voltage"><i aria-hidden="true">ϟ</i><b>Voltage</b><span>Blue and yellow, live circuits</span></label>
+      <label style="--c:#d0a2f7"><input type="radio" name="theme" value="royal"><i aria-hidden="true">♛</i><b>Royal</b><span>Purple and gold, velvet</span></label>
+      <label style="--c:#efca5a"><input type="radio" name="theme" value="crunch"><i aria-hidden="true">◎</i><b>Crunch</b><span>Saturday-morning cereal</span></label>
+      <label style="--c:#ef4444"><input type="radio" name="theme" value="xody" checked><i aria-hidden="true">◆</i><b>Xody</b><span>Red on black, embers</span></label>
+      <label style="--c:#00ff41"><input type="radio" name="theme" value="hacker"><i aria-hidden="true">▓</i><b>Hacker</b><span>Green on black, matrix rain</span></label>
+    </fieldset>
+  </form>
+  <p class="hint">Try one. This whole page changes with it.</p>
+</div>
+
+<section id="themes">
+  <div class="wrap">
+    <h2>What you get</h2>
+    <p class="lead" style="margin-top:14px">Every picture here is rendered from the theme's own drawing code, so the colors, banners and scenes are exactly what the theme draws.</p>
+    <div class="detail">
+      <img class="shot" id="session" loading="lazy" src="images/xody-session.png" width="1600" height="1016" alt="Xody: prompts in red cards, a diamond divider on each reply, and the Cooking spinner">
+      <div>
+        <h3 id="name">Xody</h3>
+        <span class="tag" id="pack">theme-pack</span>
+        <p class="look" id="look">Red on black. Embers rise off a bed of glowing coals, cooling from gold to deep red as they climb, under a XODY banner.</p>
+        <div id="words-box">
+          <p class="label">Spinner words</p>
+          <ul class="words" id="words"></ul>
+        </div>
+        <p class="label">Activity bar, with the Desktop HUD</p>
+        <div class="facts">
+          <p><b>Scene:</b> <span id="scene">Layers of flame throwing embers</span></p>
+          <p><b>On each tool call:</b> <span id="burst">A fireball</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="strips">
+      <div id="strip-box">
+        <p class="label">Animated strip in the desktop app</p>
+        <img id="strip" loading="lazy" src="images/xody-desktop.svg" width="640" height="40" alt="Xody desktop strip: embers drifting up through the dark beside a blinking red cursor">
+      </div>
+      <div>
+        <p class="label">Activity bar</p>
+        <img id="bar" loading="lazy" src="images/xody-bar.svg" width="480" height="54" alt="Xody activity bar: layers of flame throwing embers, above a progress rail">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>What each theme changes</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th scope="col">Change</th><th scope="col">Sakura, Voltage, Royal, Crunch, Xody</th><th scope="col">Hacker</th></tr></thead>
+        <tbody>
+          <tr><td>Colors across Claude Code</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr><td>Animated scene above the prompt</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr><td>Boot banner until your first prompt</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr><td>Themed spinner and "done" words</td><td class="y">Yes</td><td class="n">No</td></tr>
+          <tr><td>Your prompts framed in cards</td><td class="y">Yes</td><td class="n">No</td></tr>
+          <tr><td>A themed divider opening each reply</td><td class="y">Yes</td><td class="n">No</td></tr>
+          <tr><td>Theme badge next to your modes</td><td class="y">Yes</td><td class="n">No</td></tr>
+          <tr><td>Animated strip in the desktop app</td><td class="y">Yes</td><td class="n">No</td></tr>
+          <tr><td>Activity bar, with the Desktop HUD</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="hud" style="padding-top:0">
+  <div class="wrap">
+    <h2>Desktop HUD</h2>
+    <p class="lead" style="margin-top:14px">An optional extra for the Claude desktop app. It works with any theme, and each theme here gets its own look.</p>
+    <div class="hud">
+      <div>
+        <h3>The activity bar</h3>
+        <p>It sits above the prompt and shows what Claude is doing. It stays calm while Claude is idle, picks up while Claude works, and fires a burst on every tool call.</p>
+        <h3>The progress rail</h3>
+        <p>One segment for each step of Claude's task list, and one dot for each subagent. Finished pieces fill in, and failed subagents turn red.</p>
+      </div>
+      <img class="moving" loading="lazy" src="images/activity-bars.svg" width="700" height="284" alt="The Voltage activity bar four ways: idle, working, with a task list, and with subagents including a failed one">
+    </div>
+    <img class="wide" loading="lazy" src="images/hud-dashboard.svg" width="1072" height="270" alt="The /dash panel in the Xody, Voltage and Sakura themes: a context gauge, a tool mix donut and tokens per turn. The numbers are samples.">
+    <ul class="commands">
+      <li><code>/dash</code>Tokens per turn, context used, cost and the tools Claude called</li>
+      <li><code>/files</code>A heatmap of the files Claude read or edited this session</li>
+      <li><code>/actions</code>A dock of one-click commands and saved prompts</li>
+      <li><code>/hud</code>All three</li>
+    </ul>
+  </div>
+</section>
+
+<section id="install" style="padding-top:0">
+  <div class="wrap">
+    <h2>Install</h2>
+    <p class="lead" style="margin-top:14px">You need Claude Code with plugin support. These themes are tested on Claude Code 2.1.316. <code>theme-pack</code> has Sakura, Voltage, Royal, Crunch and Xody, and <code>hacker-terminal</code> has Hacker, so install one or both.</p>
+    <div class="ways">
+      <div class="way">
+        <h3>In a Claude Code session</h3>
+        <div class="cmd"><code>/plugin install theme-pack <span>--marketplace</span> CodySpooner/<wbr>ClaudeCodeThemes</code><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><code>/plugin install hacker-terminal <span>--marketplace</span> CodySpooner/<wbr>ClaudeCodeThemes</code><button class="copy" type="button">Copy</button></div>
+        <p>The first time, answer <code>y</code> to add the marketplace, then choose <b>user</b> scope for all your projects.</p>
+      </div>
+      <div class="way">
+        <h3>From a shell</h3>
+        <div class="cmd"><code>claude plugin install theme-pack <span>--marketplace</span> CodySpooner/<wbr>ClaudeCodeThemes</code><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><code>claude plugin install hacker-terminal <span>--marketplace</span> CodySpooner/<wbr>ClaudeCodeThemes</code><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><code>claude plugin install desktop-hud <span>--marketplace</span> CodySpooner/<wbr>ClaudeCodeThemes</code><button class="copy" type="button">Copy</button></div>
+      </div>
+      <div class="way">
+        <h3>In the desktop app</h3>
+        <ol>
+          <li>Click <b>+</b> next to the prompt box, then <b>Plugins</b>.</li>
+          <li>Click <b>Add marketplace</b> and enter <code>CodySpooner/ClaudeCodeThemes</code>.</li>
+          <li>Click <b>Add plugin</b> for <code>theme-pack</code>, <code>hacker-terminal</code>, <code>desktop-hud</code> or all three.</li>
+        </ol>
+      </div>
+    </div>
+    <ol class="steps">
+      <li><b>Run <code>/theme</code>.</b> The six are listed with Claude Code's own themes.</li>
+      <li><b>Pick one.</b> Its banner greets you until your first prompt.</li>
+      <li><b>Start typing.</b> The scene keeps animating above the prompt.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="help" style="padding-top:0">
+  <div class="wrap">
+    <h2>Help</h2>
+    <details>
+      <summary>Go back to normal</summary>
+      <div>Run <code>/theme</code> and pick one of Claude Code's own themes. All the extras switch off with it.</div>
+    </details>
+    <details>
+      <summary>Update or uninstall</summary>
+      <div>
+        <p>To update, run this, then restart Claude Code:</p>
+        <div class="cmd"><code>claude plugin update theme-pack@claude-code-themes</code><button class="copy" type="button">Copy</button></div>
+        <p style="margin-top:14px">To uninstall, run this, then pick another theme in <code>/theme</code>:</p>
+        <div class="cmd"><code>claude plugin uninstall theme-pack@claude-code-themes</code><button class="copy" type="button">Copy</button></div>
+        <p style="margin-top:14px">For Hacker, use <code>hacker-terminal@claude-code-themes</code> instead, and for the HUD, <code>desktop-hud@claude-code-themes</code>.</p>
+      </div>
+    </details>
+    <details>
+      <summary>The themes aren't listed in /theme</summary>
+      <div>Run <code>/reload-plugins</code> or restart Claude Code. <code>claude plugin list</code> shows whether the pack is installed and enabled.</div>
+    </details>
+    <details>
+      <summary>Nothing moves</summary>
+      <div>Reduced motion is on, or the window is too short for the scene, which needs 3 or 4 free rows above the prompt.</div>
+    </details>
+    <details>
+      <summary>Boxes instead of petals or katakana</summary>
+      <div>Your terminal font is missing those symbols. Switch to a font with wider symbol coverage, like Cascadia Code or JetBrains Mono.</div>
+    </details>
+    <details>
+      <summary>The banner disappeared</summary>
+      <div>It only shows until your first prompt, and comes back in your next session.</div>
+    </details>
+    <details>
+      <summary>No progress rail</summary>
+      <div>It only appears when Claude has a task list or subagents, and only in the desktop app with <code>desktop-hud</code> installed.</div>
+    </details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Made by <a href="https://github.com/CodySpooner">Xody</a>. <a href="https://github.com/CodySpooner/ClaudeCodeThemes/blob/main/LICENSE">MIT license</a>.</span>
+    <span>An unofficial community project, not made by or affiliated with Anthropic.</span>
+  </div>
+</footer>
+
+<script>
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const THEMES = {
+  sakura: { name: 'Sakura', pack: 'theme-pack', bg: '#140a0d', look: 'Red and white. Cherry petals drift across the strip on a breeze, under a red sun.',
+    words: ['Blooming', 'Drifting', 'Folding', 'Unfurling', 'Blossoming', 'Steeping'], scene: 'Blossoms swaying in front of a setting sun', burst: 'A blossom bursts into petals',
+    boot: 'falling petals above a SAKURA block banner and the prompt', session: 'prompts in red cards, a petal divider on each reply, and the Drifting spinner', strip: 'petals drifting past a red sun at dusk' },
+  voltage: { name: 'Voltage', pack: 'theme-pack', bg: '#0a1122', look: 'Blue and yellow. Current pulses along the traces of a circuit board.',
+    words: ['Routing', 'Pulsing', 'Soldering', 'Charging', 'Arcing', 'Amplifying', 'Overclocking'], scene: 'An LED meter under crackling arcs', burst: 'A lightning strike',
+    boot: 'a circuit board scene above a VOLTAGE block banner', session: 'prompts in blue cards, a bolt divider on each reply, and the Pulsing spinner', strip: 'yellow pulses racing along blue circuit traces' },
+  royal: { name: 'Royal', pack: 'theme-pack', bg: '#140b21', look: 'Purple and gold. Gold sparkles twinkle over velvet, above a shimmering gold fringe.',
+    words: ['Decreeing', 'Knighting', 'Crowning', 'Proclaiming', 'Gilding', 'Summoning the court'], scene: 'Gold organ pipes with jewel caps on velvet', burst: 'A crown in a shower of stars',
+    boot: 'gold sparkles on velvet above a ROYAL block banner', session: 'prompts in purple cards, a crown divider on each reply, and the Knighting spinner', strip: 'twinkling gold stars over purple velvet with a gold fringe' },
+  crunch: { name: 'Crunch', pack: 'theme-pack', bg: '#140730', look: 'A Saturday-morning cereal look. Cereal loops tumble into a wave of milk while a spoon swoops through. It also restyles the conversation, with a gold "claude" pill on each reply and a decorated footer on every turn.',
+    words: ['Crunching', 'Pouring', 'Spooning', 'Sprinkling', 'Toasting', 'Frosting', 'Stirring the bowl'], scene: 'Stacks of cereal loops leaping out of milk', burst: 'A spoon swoops through',
+    boot: 'cereal loops falling into milk above a CRUNCH block banner', session: 'labelled prompt cards, the gold claude pill, a decorated turn footer and the Pouring spinner', strip: 'cereal loops bouncing on a wave of milk as a spoon swoops past' },
+  xody: { name: 'Xody', pack: 'theme-pack', bg: '#0e0707', look: 'Red on black. Embers rise off a bed of glowing coals, cooling from gold to deep red as they climb, under a XODY banner.',
+    words: ['Vibing', 'Cooking', 'Shipping', 'Igniting', 'Forging', 'Stoking the fire'], scene: 'Layers of flame throwing embers', burst: 'A fireball',
+    boot: 'embers rising off glowing coals above a XODY block banner', session: 'prompts in red cards, a diamond divider on each reply, and the Cooking spinner', strip: 'embers drifting up through the dark beside a blinking red cursor' },
+  hacker: { name: 'Hacker', pack: 'hacker-terminal', bg: '#070e0a', look: 'Green on black. Matrix rain falls above the prompt, and an "ACCESS GRANTED" banner greets you until your first prompt.',
+    words: [], scene: 'Digital rain and a live signal trace', burst: 'A scan bar sweeps across',
+    boot: 'green katakana rain above an ACCESS GRANTED block banner', session: 'a green-on-black session with matrix rain above the prompt' }
+};
+const $ = id => document.getElementById(id);
+const root = document.documentElement;
+let words = [], turn = 0;
+
+function apply(key) {
+  const t = THEMES[key];
+  root.dataset.theme = key;
+  document.querySelector('meta[name=theme-color]').content = t.bg;
+  document.querySelector(`input[value=${key}]`).checked = true;
+  $('bar').src = `images/${key}-bar.svg`;
+  $('bar').alt = `${t.name} activity bar: ${t.scene.toLowerCase()}, above a progress rail`;
+  $('boot').src = still ? `images/${key}-session.png` : `images/${key}-boot.gif`;
+  $('boot').alt = `${t.name}: ${still ? t.session : t.boot}`;
+  $('session').src = `images/${key}-session.png`;
+  $('session').alt = `${t.name}: ${t.session}`;
+  $('name').textContent = t.name;
+  $('pack').textContent = t.pack;
+  $('look').textContent = t.look;
+  $('scene').textContent = t.scene;
+  $('burst').textContent = t.burst;
+  $('quick').innerHTML = `/plugin install ${t.pack} <span>--marketplace</span> CodySpooner/<wbr>ClaudeCodeThemes`;
+  $('strip-box').hidden = !t.strip;
+  if (t.strip) { $('strip').src = `images/${key}-desktop.svg`; $('strip').alt = `${t.name} desktop strip: ${t.strip}`; }
+  $('words-box').hidden = !t.words.length;
+  $('words').replaceChildren(...t.words.map(w => Object.assign(document.createElement('li'), { textContent: w })));
+  $('spin').hidden = !t.words.length;
+  words = t.words; turn = 0;
+  if (words.length) $('word').textContent = words[0];
+}
+
+function pick(key, x, y) {
+  if (location.hash.slice(1) !== key) history.replaceState(null, '', '#' + key);
+  if (still || !document.startViewTransition) return apply(key);
+  root.style.setProperty('--x', x + 'px');
+  root.style.setProperty('--y', y + 'px');
+  document.startViewTransition(() => apply(key));
+}
+
+document.querySelectorAll('input[name=theme]').forEach(input => input.addEventListener('change', () => {
+  const box = input.parentElement.getBoundingClientRect();
+  pick(input.value, box.left + box.width / 2, box.top + box.height / 2);
+}));
+
+const start = location.hash.slice(1);
+apply(Object.hasOwn(THEMES, start) ? start : 'xody');
+
+if (!still) setInterval(() => { if (words.length) $('word').textContent = words[turn = (turn + 1) % words.length]; }, 1800);
+
+document.querySelectorAll('.copy').forEach(button => button.addEventListener('click', async () => {
+  const text = button.previousElementSibling.textContent;
+  try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; }
+  catch { button.textContent = 'Press Ctrl+C'; getSelection().selectAllChildren(button.previousElementSibling); }
+  setTimeout(() => { button.textContent = 'Copy'; }, 1600);
+}));
+</script>
+</body>
+</html>
